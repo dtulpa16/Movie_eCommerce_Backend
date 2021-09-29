@@ -10,12 +10,8 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210929185501_Genre.cs.Designer.cs
-    [Migration("20210929185501_Genre.cs")]
-=======
-    [Migration("20210929184958_Genre.cs")]
->>>>>>> 3ec7c4ce8fda5343af7b9663a372ab4ba9929780:eCommerceStarterCode/Migrations/20210929184958_Genre.cs.Designer.cs
-    partial class Genrecs
+    [Migration("20210929185332__SeedRoles.cs")]
+    partial class _SeedRolescs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,25 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210929185501_Genre.cs.Designer.cs
-                            Id = "514cd79e-0f09-49a7-89fe-e3cccd5f35a7",
-                            ConcurrencyStamp = "34d4ee88-6d43-454b-acd1-00f12f6279fe",
-=======
-                            Id = "6f3bb06b-e420-4f7c-babe-94ddbb3e1386",
-                            ConcurrencyStamp = "5fafa973-6bb7-43a4-af1a-5208f8b071b8",
->>>>>>> 3ec7c4ce8fda5343af7b9663a372ab4ba9929780:eCommerceStarterCode/Migrations/20210929184958_Genre.cs.Designer.cs
+                            Id = "1b017da4-8d6c-4b1f-8a04-208c83b0b715",
+                            ConcurrencyStamp = "7b6413f8-62f8-4abe-8b3a-93bd6aa8c43f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210929185501_Genre.cs.Designer.cs
-                            Id = "9b34da58-cd9e-44fc-9ab3-5bdfef0c8df0",
-                            ConcurrencyStamp = "93f9fce2-5def-4b19-a085-798e473dfb24",
-=======
-                            Id = "866d26b7-ee82-4540-a876-a612c280bdc2",
-                            ConcurrencyStamp = "809cd948-7272-404d-8a36-1f3cc40949ca",
->>>>>>> 3ec7c4ce8fda5343af7b9663a372ab4ba9929780:eCommerceStarterCode/Migrations/20210929184958_Genre.cs.Designer.cs
+                            Id = "ffe3495d-ca1d-46a0-a6ea-24991f1a4aac",
+                            ConcurrencyStamp = "48b6f161-e6f7-4bf9-8961-3c2e4c03a809",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
