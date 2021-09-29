@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+
 
 #nullable disable
 
@@ -11,8 +14,6 @@ namespace eCommerceStarterCode.Models
     public class Reviews
     {
         [Key]
-
-
         public int ReviewId { get; set; }
         public string Body { get; set; }
         public int Rating { get; set; }

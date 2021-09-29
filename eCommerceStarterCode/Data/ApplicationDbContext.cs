@@ -1,10 +1,17 @@
 ﻿using eCommerceStarterCode.Configuration;
 using eCommerceStarterCode.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
 namespace eCommerceStarterCode.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
@@ -15,29 +22,66 @@ namespace eCommerceStarterCode.Data
         }
 
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+<<<<<<< HEAD
         public DbSet<Reviews> Reviews { get; set; };
+=======
+>>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
         public DbSet<Genres> Genres { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Reviews> Reviews { get; set; }
 
 
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        
+
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Product>()
-            .HasData(
-                new Product { Id = 1, Name = "Oklahoma", Description = "xxx", Price = '2', Type = "Musical" },
-                new Product { Id = 2, Name = "Happy Gilmore", Description = "xxx", Price = '3', Type = "Comedy" },
-                new Product { Id = 3, Name = "Love: After Lockup", Description = "xxx", Price = '5', Type = "Documentary" },
-                new Product { Id = 4, Name = "SNatch", Description = "xxx", Price = '6', Type = "Comedy" },
-                new Product { Id = 5, Name = "The Parent Trap", Description = "xxx", Price = '2', Type = "Musical" }
+
+            modelBuilder.ApplyConfiguration(new RolesConfiguration());
+            modelBuilder.Entity<ShoppingCart>()
+                .HasKey(i => new { i.UserId, i.ProductId });
 
 
 
-          );
+            modelBuilder.Entity<Genres>().HasData
+            (
+                new Genres
+                {
+                    Id = 1,
+                    Type= "Musical"
+                },
+                new Genres
+                {
+                    Id = 2,
+                    Type = "Comedy"
+                },
+                new Genres
+                {
+                    Id = 3,
+                    Type = "Documentary"
+                }
+            );
+            modelBuilder.Entity<Product>().HasData
+            (
+                
+                new Product { Id = 1, Name = "Oklahoma", Description = "xxx", Price = '2', GenresId = 1},
+                new Product { Id = 2, Name = "Happy Gilmore", Description = "xxx", Price = '3', GenresId = 2 },
+                new Product { Id = 3, Name = "Love: After Lockup", Description = "xxx", Price = '5', GenresId = 3 },
+                new Product { Id = 4, Name = "Snatch", Description = "xxx", Price = '6', GenresId = 1 },
+                new Product { Id = 5, Name = "The Parent Trap", Description = "xxx", Price = '2', GenresId = 3 }
 
+            );
         }
+
+
+
+
+
+
+
     }
 }
+
 

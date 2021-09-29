@@ -1,4 +1,5 @@
 ﻿using eCommerceStarterCode.Data;
+using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Http;
@@ -37,7 +38,11 @@ namespace eCommerceStarterCode.Controllers
         }
 
 
+<<<<<<< HEAD
         public IActionResult Post([FromBody]User value)
+=======
+        public IActionResult Post([FromBody] User value)
+>>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
         {
             _context.Users.Add(value);
             _context.SaveChanges();
