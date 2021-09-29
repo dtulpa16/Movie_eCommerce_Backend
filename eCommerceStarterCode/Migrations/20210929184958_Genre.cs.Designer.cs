@@ -10,8 +10,8 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210929182640_Products.cs")]
-    partial class Productscs
+    [Migration("20210929184958_Genre.cs")]
+    partial class Genrecs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7523f598-1c3e-4a0b-8bd6-6834eb69c8e4",
-                            ConcurrencyStamp = "33558c59-0a8a-45d7-ad87-f2c63c7e8239",
+                            Id = "6f3bb06b-e420-4f7c-babe-94ddbb3e1386",
+                            ConcurrencyStamp = "5fafa973-6bb7-43a4-af1a-5208f8b071b8",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "d4398cac-8a56-4ab1-8baa-6f5c86029d88",
-                            ConcurrencyStamp = "aaf86f81-fb8a-4bf4-bb9b-8a436e7eb564",
+                            Id = "866d26b7-ee82-4540-a876-a612c280bdc2",
+                            ConcurrencyStamp = "809cd948-7272-404d-8a36-1f3cc40949ca",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

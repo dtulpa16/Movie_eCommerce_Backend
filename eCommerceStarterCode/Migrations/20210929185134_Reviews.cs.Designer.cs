@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceStarterCode.Data;
 
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210929185134_Reviews.cs")]
+    partial class Reviewscs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1b017da4-8d6c-4b1f-8a04-208c83b0b715",
-                            ConcurrencyStamp = "7b6413f8-62f8-4abe-8b3a-93bd6aa8c43f",
+                            Id = "825f7e18-8791-43e7-9150-7129e2b47817",
+                            ConcurrencyStamp = "190d252e-0c5b-4d3c-abbb-59f8a6a5b44e",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "ffe3495d-ca1d-46a0-a6ea-24991f1a4aac",
-                            ConcurrencyStamp = "48b6f161-e6f7-4bf9-8961-3c2e4c03a809",
+                            Id = "aa34a7fd-bd4c-4c2c-aac2-d5e92148e916",
+                            ConcurrencyStamp = "b86830fc-9f58-45c2-b98c-a8ac6d58a495",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
