@@ -46,7 +46,7 @@ namespace eCommerceStarterCode.Controllers
         public IActionResult GetUserProductsForSale(string id)
         {
             var userId = User.FindFirstValue("id");
-            var usersProductsForSale = _context.Products.Include()
+            var usersProductsForSale = _context.Products.Include(p => p.UserId).Where(p => p.UserId == userId);
             return Ok(usersProductsForSale);
         }
 

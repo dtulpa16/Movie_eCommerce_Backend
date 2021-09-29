@@ -6,12 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
 namespace eCommerceStarterCode.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
@@ -22,10 +17,6 @@ namespace eCommerceStarterCode.Data
         }
 
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-<<<<<<< HEAD
-        public DbSet<Reviews> Reviews { get; set; };
-=======
->>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
         public DbSet<Genres> Genres { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Reviews> Reviews { get; set; }

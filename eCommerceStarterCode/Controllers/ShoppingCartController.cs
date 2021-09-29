@@ -23,8 +23,7 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
-<<<<<<< HEAD
-=======
+
     
         // GET: api/<ShoppingCartController>
         [HttpGet]
@@ -33,28 +32,15 @@ namespace eCommerceStarterCode.Controllers
             var cart = _context.ShoppingCarts;
             return Ok(cart);
         }
->>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
-
-        // GET: api/shoppingcart
-        //[HttpGet]
-        //public IActionResult GetAllCarts()
-        //{
-        //    var cart = _context.ShoppingCarts;
-        //    return Ok(cart);
-        //}
 
         // GET api/ShoppingCart/{userId}
         [HttpGet("{userId}"), Authorize]
         public IActionResult GetAllCartsForUser(string id)
         {
-<<<<<<< HEAD
             var userId = User.FindFirstValue("id");
-            var userCarts = _context.ShoppingCarts.Include(sc => sc.Product).Where(sc => sc.IdentityUserId == userId).Select(sc => sc.Product);
+            var userCarts = _context.ShoppingCarts.Include(sc => sc.Products).Where(sc => sc.UserId == userId).Select(sc => sc.Products);
             return Ok(userCarts);
-=======
-            var userCart = _context.ShoppingCarts.Find(id);
-            return Ok(userCart);
->>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
+
         }
 
         // POST api/ShoppingCart

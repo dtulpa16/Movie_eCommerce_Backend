@@ -38,11 +38,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
 
-<<<<<<< HEAD
         public IActionResult Post([FromBody]User value)
-=======
-        public IActionResult Post([FromBody] User value)
->>>>>>> faeeb9e5992fb6ee65f4c8fabca8000fdd118d91
         {
             _context.Users.Add(value);
             _context.SaveChanges();
