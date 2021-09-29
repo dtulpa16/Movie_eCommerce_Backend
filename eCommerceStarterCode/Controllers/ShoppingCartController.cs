@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using eCommerceStarterCode.Models;
 using eCommerceStarterCode.Data;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +23,7 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
+
     
         // GET: api/<ShoppingCartController>
         [HttpGet]
@@ -29,15 +33,17 @@ namespace eCommerceStarterCode.Controllers
             return Ok(cart);
         }
 
-        // GET api/<ShoppingCartController>/5
-        [HttpGet("{id}")]
-        public IActionResult GetSingleCarts(int id)
+        // GET api/ShoppingCart/{userId}
+        [HttpGet("{userId}"), Authorize]
+        public IActionResult GetAllCartsForUser(string id)
         {
-            var userCart = _context.ShoppingCarts.Find(id);
-            return Ok(userCart);
+            var userId = User.FindFirstValue("id");
+            var userCarts = _context.ShoppingCarts.Include(sc => sc.Products).Where(sc => sc.UserId == userId).Select(sc => sc.Products);
+            return Ok(userCarts);
+
         }
 
-        // POST api/<ShoppingCartController>
+        // POST api/ShoppingCart
         [HttpPost]
         public IActionResult Post([FromBody]ShoppingCart value)
         {
@@ -53,7 +59,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // DELETE api/<ShoppingCartController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete, Authorize]
         public void Delete(int id)
         {
             var deleteFromCart = _context.ShoppingCarts.Find(id);

@@ -7,8 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-
-
 namespace eCommerceStarterCode.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>

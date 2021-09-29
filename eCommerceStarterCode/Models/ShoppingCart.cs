@@ -5,16 +5,10 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-
-
-
-
 namespace eCommerceStarterCode.Models
 {
     public class ShoppingCart
     {
-     
-        
         public int Quantity { get; set; }
         [ForeignKey("Products")]
         public int ProductId { get; set; }
@@ -22,7 +16,6 @@ namespace eCommerceStarterCode.Models
         [ForeignKey("User")]
         public string UserId { get; set; }
         public User User { get; set; }
-
     }
 }
 
