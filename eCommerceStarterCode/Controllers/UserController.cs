@@ -22,7 +22,7 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
-        // <baseurl>/api/user
+        // <baseurl>/api/users
 
 
         [HttpGet, Authorize]

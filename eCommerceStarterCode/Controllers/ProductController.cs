@@ -34,7 +34,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // GET api/<ProductController>/5
-        [HttpGet("selected_product")]
+        [HttpGet("{Id}")]
         public IActionResult GetSingleProduct(int id)
         {
             var singleProduct = _context.Products.Where(p => p.Id == id);
@@ -42,7 +42,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         //UNFINISHED ENDPOINT TO FIND PRODUCTS FOR SALE BY USER
-        [HttpGet("selling{userId}"), Authorize]
+        [HttpGet("selling/{userId}"), Authorize]
         public IActionResult GetUserProductsForSale(string id)
         {
             var userId = User.FindFirstValue("id");

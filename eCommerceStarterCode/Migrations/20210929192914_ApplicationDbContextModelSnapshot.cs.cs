@@ -2,29 +2,29 @@
 
 namespace eCommerceStarterCode.Migrations
 {
-    public partial class ShoppingCartcs : Migration
+    public partial class ApplicationDbContextModelSnapshotcs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "7f2dd3e5-8c56-4a00-ab63-3143e3302873");
+                keyValue: "01a73aa3-dcb8-49bc-ab75-48571ba41249");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "f24da0c2-ebca-4a8d-99d5-bab222c72a91");
+                keyValue: "d8c356f8-7010-4eae-8328-e2071b937c68");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "bf0a53e4-aed5-4c57-a086-798a083158d7", "b4f8f66b-a83f-4df3-aa62-0369c1bc97fe", "User", "USER" });
+                values: new object[] { "beafbe54-7186-4693-ac45-e4b6219d8522", "489132b1-5ebd-4b09-9f5c-7f59dea44dda", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1a96ef81-06a2-4512-af80-290a78177f90", "84b4842f-b2af-47b4-b8ac-3e43655e94c1", "Admin", "ADMIN" });
+                values: new object[] { "08cd62dc-c685-4a93-9687-d3a672d9bf10", "6ff9db1d-cb70-4cf0-b579-d1e7789ab38b", "Admin", "ADMIN" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -32,22 +32,22 @@ namespace eCommerceStarterCode.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "1a96ef81-06a2-4512-af80-290a78177f90");
+                keyValue: "08cd62dc-c685-4a93-9687-d3a672d9bf10");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "bf0a53e4-aed5-4c57-a086-798a083158d7");
+                keyValue: "beafbe54-7186-4693-ac45-e4b6219d8522");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "7f2dd3e5-8c56-4a00-ab63-3143e3302873", "f4c59376-a653-48ff-9879-b127278163f8", "User", "USER" });
+                values: new object[] { "d8c356f8-7010-4eae-8328-e2071b937c68", "8db81caa-5cd2-432c-bad1-6436f0934ebb", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "f24da0c2-ebca-4a8d-99d5-bab222c72a91", "96b32f50-988f-48f5-a79a-ac40700de03a", "Admin", "ADMIN" });
+                values: new object[] { "01a73aa3-dcb8-49bc-ab75-48571ba41249", "1adc717a-e734-49fc-8c1e-6f633007bb3d", "Admin", "ADMIN" });
         }
     }
 }
