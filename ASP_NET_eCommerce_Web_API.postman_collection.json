@@ -70,7 +70,7 @@
 			]
 		},
 		{
-			"name": "Examples",
+			"name": "Users",
 			"item": [
 				{
 					"name": "Get_Current_User",
@@ -81,7 +81,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44394/api/examples/user",
+							"raw": "https://localhost:44394/api/user/user",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -89,7 +89,7 @@
 							"port": "44394",
 							"path": [
 								"api",
-								"examples",
+								"user",
 								"user"
 							]
 						}

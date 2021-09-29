@@ -7,19 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Route("api/examples")]
+    [Route("api/users")]
     [ApiController]
-    public class ExamplesController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public ExamplesController(ApplicationDbContext context)
+        public UserController(ApplicationDbContext context)
         {
             _context = context;
         }
-        // <baseurl>/api/examples/user
+        // <baseurl>/api/users/user
+
+
         [HttpGet("user"), Authorize]
         public IActionResult GetCurrentUser()
         {
@@ -30,6 +33,14 @@ namespace eCommerceStarterCode.Controllers
                 return NotFound();
             }
             return Ok(user);
+        }
+
+
+        public IActionResult Post([FromBody]Users value)
+        {
+            _context.Users.Add(value);
+            _context.SaveChanges();
+            return StatusCode(201, value);
         }
     }
 }
