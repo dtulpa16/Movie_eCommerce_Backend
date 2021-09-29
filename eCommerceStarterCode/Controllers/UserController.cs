@@ -1,5 +1,6 @@
 ﻿using eCommerceStarterCode.Data;
 using Microsoft.AspNetCore.Authorization;
+using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,10 +21,10 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
-        // <baseurl>/api/users/user
+        // <baseurl>/api/user
 
 
-        [HttpGet("user"), Authorize]
+        [HttpGet, Authorize]
         public IActionResult GetCurrentUser()
         {
             var userId = User.FindFirstValue("id");
@@ -36,7 +37,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
 
-        public IActionResult Post([FromBody]Users value)
+        public IActionResult Post([FromBody]User value)
         {
             _context.Users.Add(value);
             _context.SaveChanges();

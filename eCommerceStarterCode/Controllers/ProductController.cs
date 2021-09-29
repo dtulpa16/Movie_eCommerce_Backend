@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using eCommerceStarterCode.Models;
 using eCommerceStarterCode.Data;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,16 +34,34 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // GET api/<ProductController>/5
-        [HttpGet("{id}")]
+        [HttpGet("selected_product")]
         public IActionResult GetSingleProduct(int id)
         {
-            var singleProduct = _context.Products.Find(id);
+            var singleProduct = _context.Products.Where(p => p.Id == id);
             return Ok(singleProduct);
+        }
+
+        //UNFINISHED ENDPOINT TO FIND PRODUCTS FOR SALE BY USER
+        [HttpGet("selling{userId}"), Authorize]
+        public IActionResult GetUserProductsForSale(string id)
+        {
+            var userId = User.FindFirstValue("id");
+            var usersProductsForSale = _context.Products.Include()
+            return Ok(usersProductsForSale);
+        }
+
+        // GET api/searchresults/searchterm
+        [HttpGet("searchresults/{searchTerm}")]
+        public IActionResult GetSearchResults(string searchTerm)
+        {
+            // get all products with search term in name
+            var products = _context.Products.Include(p => p.Genres).ToList().Where(p => p.Name.ToLower().Contains(searchTerm.ToLower()));
+            return Ok(products);
         }
 
         // POST api/<ProductController>
         [HttpPost]
-        public IActionResult Post([FromBody]Products value)
+        public IActionResult PostNewProduct([FromBody]Product value)
         {
             _context.Products.Add(value);
             _context.SaveChanges();
@@ -48,18 +69,16 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
+        [HttpPut()]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public void Delete(int id)
         {
-            var deleteFromCart = _context.Products.Find(id);
-            _context.Products.Delete(deleteFromCart);
-            _context.SaveChanges();
+
         }
     }
 }

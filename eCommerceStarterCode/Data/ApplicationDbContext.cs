@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-namespace ApplicationDbContext.Data
+namespace eCommerceStarterCode.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
@@ -15,7 +15,7 @@ namespace ApplicationDbContext.Data
         }
 
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<User> IdentityUser { get; set; }
+        public DbSet<Reviews> Reviews { get; set; };
         public DbSet<Genres> Genres { get; set; }
         public DbSet<Product> Products { get; set; }
 
