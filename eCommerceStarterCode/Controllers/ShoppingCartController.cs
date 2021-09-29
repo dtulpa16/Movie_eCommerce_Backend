@@ -25,7 +25,7 @@ namespace eCommerceStarterCode.Controllers
         [HttpGet]
         public IActionResult GetAllCarts()
         {
-            var cart = _context.ShoppingCart;
+            var cart = _context.ShoppingCarts;
             return Ok(cart);
         }
 
@@ -33,7 +33,7 @@ namespace eCommerceStarterCode.Controllers
         [HttpGet("{id}")]
         public IActionResult GetSingleCarts(int id)
         {
-            var userCart = _context.ShoppingCart.Find(id);
+            var userCart = _context.ShoppingCarts.Find(id);
             return Ok(userCart);
         }
 
@@ -41,7 +41,7 @@ namespace eCommerceStarterCode.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ShoppingCart value)
         {
-            _context.ShoppingCart.Add(value);
+            _context.ShoppingCarts.Add(value);
             _context.SaveChanges();
             return StatusCode(201, value);
         }
@@ -56,8 +56,8 @@ namespace eCommerceStarterCode.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var deleteFromCart = _context.ShoppingCart.Find(id);
-            _context.ShoppingCart.Delete(deleteFromCart);
+            var deleteFromCart = _context.ShoppingCarts.Find(id);
+            _context.ShoppingCarts.Remove(deleteFromCart);
             _context.SaveChanges();
         }
     }

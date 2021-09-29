@@ -40,7 +40,7 @@ namespace eCommerceStarterCode.Controllers
 
         // POST api/<ProductController>
         [HttpPost]
-        public IActionResult Post([FromBody]Products value)
+        public IActionResult Post([FromBody]Product value)
         {
             _context.Products.Add(value);
             _context.SaveChanges();
@@ -58,7 +58,7 @@ namespace eCommerceStarterCode.Controllers
         public void Delete(int id)
         {
             var deleteFromCart = _context.Products.Find(id);
-            _context.Products.Delete(deleteFromCart);
+            _context.Products.Remove(deleteFromCart);
             _context.SaveChanges();
         }
     }
