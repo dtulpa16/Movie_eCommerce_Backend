@@ -34,11 +34,11 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // GET api/ShoppingCart/{userId}
-        [HttpGet("{userId}"), Authorize]
-        public IActionResult GetAllCartsForUser(string id)
+        [HttpGet("{userId}")]
+        public IActionResult GetAllCartsForUser(string userId)
         {
-            var userId = User.FindFirstValue("id");
-            var userCarts = _context.ShoppingCarts.Include(sc => sc.Products).Where(sc => sc.UserId == userId).Select(sc => sc.Products);
+            //var userId = User.FindFirstValue("id");
+            var userCarts = _context.ShoppingCarts.Include(sc => sc.Products).ToList().Where(sc => sc.UserId == userId);
             return Ok(userCarts);
 
         }
