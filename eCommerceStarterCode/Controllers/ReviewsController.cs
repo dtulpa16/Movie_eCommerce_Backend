@@ -34,13 +34,12 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // GET api/<ReviewsController>/5
-        [HttpGet("review")]
-        public IActionResult GetSingleReview(int id)
+        [HttpGet("{productId}")]
+        public IActionResult GetSingleReview(int productId)
         {
-            var singleReview = _context.Reviews.Find(id);
+            var singleReview = _context.Reviews.Where(r => r.ProductId == productId);
             return Ok(singleReview);
         }
-
         // POST api/Reviews
         [HttpPost]
         public IActionResult Post([FromBody]Reviews value)
@@ -64,7 +63,8 @@ namespace eCommerceStarterCode.Controllers
             {
                 ratingsAverage = totalRating / numberOfReviews;
             }
-            return Ok(ratingsAverage);
+
+            return Ok(String.Format("{0:.##}",ratingsAverage));
         }
     }
 }

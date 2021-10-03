@@ -59,12 +59,17 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // DELETE api/<ShoppingCartController>/5
-        [HttpDelete, Authorize]
-        public void Delete(int id)
+        [HttpDelete("{ProductId}/{UserId}")]
+        public IActionResult Delete(int ProductId, string UserId)
         {
-            var deleteFromCart = _context.ShoppingCarts.Find(id);
-            _context.ShoppingCarts.Remove(deleteFromCart);
+            var deleteProduct = _context.ShoppingCarts.Where(sc => sc.UserId == UserId && sc.ProductId == ProductId).SingleOrDefault();
+            if (deleteProduct == null)
+            {
+                return NotFound();
+            }
+            _context.ShoppingCarts.Remove(deleteProduct);
             _context.SaveChanges();
+            return Ok(deleteProduct);
         }
     }
 }
