@@ -33,7 +33,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(products);
         }
 
-        // GET api/<ProductController>/5
+        // GET api/product/{id}
         [HttpGet("{Id}")]
         public IActionResult GetSingleProduct(int id)
         {
@@ -41,7 +41,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(singleProduct);
         }
 
-        //UNFINISHED ENDPOINT TO FIND PRODUCTS FOR SALE BY USER
+        // GET api/product/selling/{userId}
         [HttpGet("selling/{userId}"), Authorize]
         public IActionResult GetUserProductsForSale(string id)
         {
@@ -75,10 +75,13 @@ namespace eCommerceStarterCode.Controllers
         }
 
         // DELETE api/<ProductController>/5
-        [HttpDelete]
-        public void Delete(int id)
+        [HttpDelete("{productId}")]
+        public IActionResult Remove(int productId)
         {
-
+            var singleProduct = _context.Products.Where(p => p.Id == productId).SingleOrDefault();
+            _context.Products.Remove(singleProduct);
+            _context.SaveChanges();
+            return Ok(singleProduct);
         }
     }
 }
