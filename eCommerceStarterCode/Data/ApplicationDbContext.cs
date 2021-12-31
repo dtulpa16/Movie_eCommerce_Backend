@@ -22,11 +22,7 @@ namespace eCommerceStarterCode.Data
         public DbSet<Reviews> Reviews { get; set; }
 
 
-
-
-        
-
-         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
