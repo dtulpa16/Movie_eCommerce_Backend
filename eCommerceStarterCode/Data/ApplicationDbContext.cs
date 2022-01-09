@@ -20,6 +20,7 @@ namespace eCommerceStarterCode.Data
         public DbSet<Genres> Genres { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
+        public DbSet<SoldTracker> SoldTracker { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -48,6 +49,21 @@ namespace eCommerceStarterCode.Data
                 {
                     Id = 3,
                     Type = "Documentary"
+                },
+                new Genres
+                {
+                    Id = 4,
+                    Type = "Action"
+                },
+                new Genres
+                {
+                    Id = 5,
+                    Type = "Suspence"
+                },
+                new Genres
+                {
+                    Id = 6,
+                    Type = "Romance"
                 }
             );
             modelBuilder.Entity<Product>().HasData

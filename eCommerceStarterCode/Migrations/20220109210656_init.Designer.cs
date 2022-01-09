@@ -10,7 +10,7 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211230175433_init")]
+    [Migration("20220109210656_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c7d744ab-2887-4ecd-acb2-16dde30e2207",
-                            ConcurrencyStamp = "2372a205-74b3-4ea6-8ab5-2141bc6a6f28",
+                            Id = "8426af22-9cc6-42be-8136-4b9353f5b4c3",
+                            ConcurrencyStamp = "f7cf7ae8-91d6-4e31-82ea-8eb65e654ca1",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fe325e2f-de97-44db-a0ea-74ab31b810da",
-                            ConcurrencyStamp = "e2e9f72f-23ce-40f7-be2f-e4c01d2923f2",
+                            Id = "0d55e4dd-c71d-4177-9211-f37f32127936",
+                            ConcurrencyStamp = "4dca83e2-3a48-4f33-93b6-ae0240a9e89d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -197,6 +197,21 @@ namespace eCommerceStarterCode.Migrations
                         {
                             Id = 3,
                             Type = "Documentary"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Type = "Action"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Type = "Suspence"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Type = "Romance"
                         });
                 });
 
@@ -320,6 +335,31 @@ namespace eCommerceStarterCode.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.SoldTracker", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GenresId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GenresId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SoldTracker");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.User", b =>
@@ -511,6 +551,23 @@ namespace eCommerceStarterCode.Migrations
                         .IsRequired();
 
                     b.Navigation("Products");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.SoldTracker", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.Genres", "Genres")
+                        .WithMany()
+                        .HasForeignKey("GenresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerceStarterCode.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Genres");
 
                     b.Navigation("User");
                 });

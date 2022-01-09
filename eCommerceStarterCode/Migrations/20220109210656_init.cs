@@ -204,6 +204,33 @@ namespace eCommerceStarterCode.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SoldTracker",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    GenresId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SoldTracker", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SoldTracker_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SoldTracker_Genres_GenresId",
+                        column: x => x.GenresId,
+                        principalTable: "Genres",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
@@ -261,8 +288,8 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "c7d744ab-2887-4ecd-acb2-16dde30e2207", "2372a205-74b3-4ea6-8ab5-2141bc6a6f28", "User", "USER" },
-                    { "fe325e2f-de97-44db-a0ea-74ab31b810da", "e2e9f72f-23ce-40f7-be2f-e4c01d2923f2", "Admin", "ADMIN" }
+                    { "8426af22-9cc6-42be-8136-4b9353f5b4c3", "f7cf7ae8-91d6-4e31-82ea-8eb65e654ca1", "User", "USER" },
+                    { "0d55e4dd-c71d-4177-9211-f37f32127936", "4dca83e2-3a48-4f33-93b6-ae0240a9e89d", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -272,7 +299,10 @@ namespace eCommerceStarterCode.Migrations
                 {
                     { 1, "Musical" },
                     { 2, "Comedy" },
-                    { 3, "Documentary" }
+                    { 3, "Documentary" },
+                    { 4, "Action" },
+                    { 5, "Suspence" },
+                    { 6, "Romance" }
                 });
 
             migrationBuilder.InsertData(
@@ -350,6 +380,16 @@ namespace eCommerceStarterCode.Migrations
                 name: "IX_ShoppingCarts_ProductId",
                 table: "ShoppingCarts",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SoldTracker_GenresId",
+                table: "SoldTracker",
+                column: "GenresId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SoldTracker_UserId",
+                table: "SoldTracker",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -374,6 +414,9 @@ namespace eCommerceStarterCode.Migrations
 
             migrationBuilder.DropTable(
                 name: "ShoppingCarts");
+
+            migrationBuilder.DropTable(
+                name: "SoldTracker");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
